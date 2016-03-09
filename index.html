@@ -1,0 +1,50 @@
+<!-- jQuery 1.11.2 -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<div class="equal-parent">
+    <div class="equal-child" style="background: #ccc; width: 200px; float: left; margin-right: 10px;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur hic vero voluptatum repellendus saepe, et totam, consequatur, neque, nisi fuga aut esse perspiciatis. Dolore perspiciatis eum ratione laborum adipisci consequatur.</p>
+    </div>
+    
+    <div class="equal-child" style="background: #ccc; width: 200px; float: left; margin-right: 10px;">
+        B
+    </div>
+    
+    <div class="equal-child" style="background: #ccc; width: 200px; float: left; margin-right: 10px;">
+        C
+    </div>
+</div>
+
+<div style="clear:both; margin-bottom:20px;"></div>
+
+<div class="equal-parent">
+    <div class="equal-child" style="background: #ccc; width: 200px; float: left; margin-right: 10px;">
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora maxime enim cum, commodi ad velit ut reprehenderit vel. Quisquam dolorem inventore temporibus est esse repellat saepe sed commodi sint asperiores corrupti, cum, laudantium? Officiis officia repudiandae, consectetur voluptatibus, temporibus dolores in placeat vero mollitia perspiciatis magni adipisci quasi blanditiis vel ipsa ex neque voluptates ea nihil. Accusamus reprehenderit, odio iure placeat magni tempore. Excepturi id consequuntur aliquam consequatur error, totam perferendis, cupiditate quibusdam quaerat, eius cum soluta blanditiis. Veniam autem officiis rerum quaerat laudantium aliquid vitae ad obcaecati impedit voluptatibus esse nesciunt ipsum aperiam fugiat, odit repellat sit repellendus numquam pariatur, minus, quibusdam consequatur ex maxime. Iste reprehenderit excepturi necessitatibus.</p>
+    </div>
+    
+    <div class="equal-child" style="background: #ccc; width: 200px; float: left; margin-right: 10px;">
+        B
+    </div>
+    
+    <div class="equal-child" style="background: #ccc; width: 200px; float: left; margin-right: 10px;">
+        C
+    </div>
+</div>
+
+<script>
+	$(function(){
+	    /** Equal columns height by @choquo 
+         *  Set the same height of child columns in a defined parent
+         */
+		var parent_class = '.equal-parent';
+		var child_class  = '.equal-child';
+		//Do Resize
+	    $(parent_class).each(function(){
+	    	var array_diff_heights = [];
+	        $(this).find(child_class).each(function(){ array_diff_heights.push(  $(this).height() ); }); //Store heights of current parent
+	        var max_height = Math.max.apply(Math, array_diff_heights );	//Get max height of current parent
+		    $(this).find(child_class).each(function(){ $(this).css({'min-height' : max_height }); }); //Apply same height to childs of current parent
+		    array_diff_heights = []; //Restart array if need to equalize another elements (parents).
+	    });
+    });
+</script>
